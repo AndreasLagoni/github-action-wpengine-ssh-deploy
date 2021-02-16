@@ -16,7 +16,7 @@ name: Deploy to WP Engine
 on:  
   push:
     branches:
-        - master
+        - production
 
 jobs:
   build:
@@ -30,7 +30,8 @@ jobs:
       env: 
           WPE_ENV_NAME: <YOUR INSTALL NAME> 
           WPENGINE_SSHG_KEY_PUBLIC: ${{ secrets.PUBLIC_KEY_NAME }} 
-          WPENGINE_SSHG_KEY_PRIVATE: ${{ secrets.PRIVATE_KEY_NAME }} 
+          WPENGINE_SSHG_KEY_PRIVATE: ${{ secrets.PRIVATE_KEY_NAME }}
+          WPE_REMOTE_PATH: <ADD YOUR REMOTE FOLDER>
 
 ```
 
@@ -43,6 +44,7 @@ jobs:
 | `WPE_ENV_NAME` | Environment Variable | Insert the name of the WP Engine environment you want to deploy to. |
 | `WPENGINE_SSHG_KEY_PRIVATE` | Secret | Private SSH Key for the SSH Gateway and deployment. See below for SSH key usage. |
 |  `WPENGINE_SSHG_KEY_PUBLIC` | Secret | Public SSH Key for the SSH Gateway and deployment. See below for SSH key usage. |
+|  `WPE_REMOTE_PATH` | Environment Variable | Insert the remote folder if you wish to push to another folder than root. |
 
 
 ### Further reading
