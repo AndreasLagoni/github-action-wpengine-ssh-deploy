@@ -4,6 +4,7 @@ set -e
 
 : ${WPE_ENV_NAME?Required environment name variable not set.}
 : ${WPE_REMOTE_PATH?Required remote path not set.}
+: ${WPE_EXCLUDES?Required excludes not set.}
 : ${WPENGINE_SSHG_KEY_PRIVATE?Required secret not set.}
 : ${WPENGINE_SSHG_KEY_PUBLIC?Required secret not set.}
 
@@ -32,4 +33,4 @@ chmod 600 "$WPENGINE_SSHG_KEY_PRIVATE_PATH"
 chmod 644 "$WPENGINE_SSHG_KEY_PUBLIC_PATH"
 
 # Deploy via SSH
-rsync --rsh="ssh -v -p 22 -i ${WPENGINE_SSHG_KEY_PRIVATE_PATH} -o StrictHostKeyChecking=no" -a --out-format="%n"  --exclude=".*" . "$WPE_DESTINATION"/
+rsync --rsh="ssh -v -p 22 -i ${WPENGINE_SSHG_KEY_PRIVATE_PATH} -o StrictHostKeyChecking=no" -a --out-format="%n"  --exclude="$WPE_EXCLUDES" . "$WPE_DESTINATION"
