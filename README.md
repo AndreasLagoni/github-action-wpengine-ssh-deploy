@@ -49,7 +49,6 @@ jobs:
 
 ### Further reading
 
-* [Defining environment variables in GitHub Actions](https://developer.github.com/actions/creating-github-actions/accessing-the-runtime-environment/#environment-variables)
 * [Storing secrets in GitHub repositories](https://developer.github.com/actions/managing-workflows/storing-secrets/)
 
 ## Setting up your SSH keys for repo
