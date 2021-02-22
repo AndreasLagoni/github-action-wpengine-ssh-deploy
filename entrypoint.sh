@@ -32,4 +32,4 @@ chmod 600 "$WPENGINE_SSHG_KEY_PRIVATE_PATH"
 chmod 644 "$WPENGINE_SSHG_KEY_PUBLIC_PATH"
 
 # Deploy via SSH
-rsync --rsh="ssh -v -p 22 -i ${WPENGINE_SSHG_KEY_PRIVATE_PATH} --delete -o StrictHostKeyChecking=no" -a --out-format="%n"  --exclude=".*" . "$WPE_DESTINATION"
+rsync --delete --rsh="ssh -v -p 22 -i ${WPENGINE_SSHG_KEY_PRIVATE_PATH} -o StrictHostKeyChecking=no" -a --out-format="%n"  --exclude=".*" . "$WPE_DESTINATION"
